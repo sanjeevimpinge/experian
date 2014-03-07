@@ -21,7 +21,7 @@ module Experian
     def authenticate
 
     end
-
+  #Todo check with vishal regarding residence information used here
     def do_action(action, args = {})
       message = <<EOS
 <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://localhost/WebService/">
@@ -38,14 +38,14 @@ module Experian
             <RequestType>#{request_type}</RequestType>
             <Environment>#{environment}</Environment>
           </Session>
-          <Consumer num="0000024001">
+          <Consumer num="#{args[:consumer_num]}">
           <Application>
-            <First_Name_1>JOHN</First_Name_1>
+            <First_Name_1>#{args[:firstname]}</First_Name_1>
             <First_Name_2></First_Name_2>
-            <Surname>SMITH</Surname>
-            <National_ID>2211229990867</National_ID>
-            <RSAid>YES</RSAid>  <Gender />
-            <Birthday>19221122</Birthday>
+            <Surname>#{args[:surname]}</Surname>
+            <National_ID>#{args[:nationalid]}</National_ID>
+            <RSAid>#{args[:rsaid]}</RSAid>  <Gender />
+            <Birthday>#{args[:birthday]}19221122</Birthday>
             <Residence_Building />
             <Residence_Street />
             <Residence_Suburb />
